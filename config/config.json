@@ -1,0 +1,10 @@
+{
+    "development": {
+        "connection": {
+            "host": "localhost",
+            "database": "test_one",
+            "username": "root",
+            "password": ""
+        }
+    }
+}

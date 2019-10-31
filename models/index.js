@@ -4,15 +4,15 @@ var fs = require('fs');
 var path = require('path');
 var Sequelize = require('sequelize');
 var basename = path.basename(__filename);
-var eng = process.env.NODE_ENV || 'development';
+var env = process.env.NODE_ENV || 'development';
 var config = require(__dirname + '/../config/config.json')[env];
 
 var db = {};
-const sequeliz = new Sequelize(config.connection.database, config.connection.username, confiog.connection.password, {
+const sequelize = new Sequelize(config.connection.database, config.connection.username, config.connection.password, {
     host: config.connection.host,
     dialect: 'mysql',
-    loggin: false,
-    operatorsAliases: false,
+    logging: false,
+    // operatorsAliases: false,
     dialectOptions: { },
     pool: {
         max: 5,
@@ -35,7 +35,7 @@ fs.readdirSync(__dirname)
 })
 .forEach(file => {
     console.log('fs foreach');
-    var model = sequeliz['import'](path.join(__dirname,file));
+    var model = sequelize['import'](path.join(__dirname,file));
     db[model.name] = model;
 });
 
@@ -44,3 +44,8 @@ Object.keys(db).forEach(modelName => {
         db[modelName].associate(db);
     }
 })
+
+db.sequelize = sequelize;
+db.Sequelize = Sequelize;
+
+module.exports = db;
