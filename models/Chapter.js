@@ -1,14 +1,18 @@
 "use strict";
 
 module.exports = (sequelize, DataTypes) => {
-    var Wizard = sequelize.define('Wizard', {
+    var Comic = sequelize.define('User', {
         name: {
             type: DataTypes.STRING,
             field: 'name'
+        },
+        comicId: {
+            type: DataTypes.INTEGER,
+            field: 'comicId'
         }
     }, {
         freezeTableName: true,
-        tableName: 'wizard'
+        tableName: 'wt_chapter'
     });
-    return Wizard
+    return Comic;
 }

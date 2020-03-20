@@ -2,7 +2,7 @@
     "development": {
         "connection": {
             "host": "localhost",
-            "database": "test_one",
+            "database": "mywt",
             "username": "root",
             "password": ""
         }

@@ -28,13 +28,11 @@ const sequelize = new Sequelize(config.connection.database, config.connection.us
 
 fs.readdirSync(__dirname)
 .filter(file => {
-    console.log('fs filter');
     return (
         file.indexOf('.') !== 0 && file !== basename && file.slice(-3) === '.js'
     );
 })
 .forEach(file => {
-    console.log('fs foreach');
     var model = sequelize['import'](path.join(__dirname,file));
     db[model.name] = model;
 });
